@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Function Promisses</title>
+</head>
+<body>
+    <div id="wrapper">
+        <p></p>
+    </div>
+
+    <script>
+        const para=document.querySelector("p");
+        fetch("https://randomuser.me/api")
+        .then((response)=>{return response.json()})
+        .then((result)=>{console.log(result);
+            print(result)
+        });
+        function print(data){
+            const image=document.createElement("img");
+            image.src=data.results[0].picture.large;
+
+            const name=document.createElement("h2");
+            name.innerHTML=data.results[0].name.first+" "+data.results[0].name.last;
+
+            const email=document.createElement("p");
+            email.innerHTML=data.results[0].email
+
+
+
+            document.querySelector("#wrapper").append(image)
+            document.querySelector("#wrapper").append(name)
+            document.querySelector("#wrapper").append(email)
+
+        }
+    </script>
+</body>
+</html>
